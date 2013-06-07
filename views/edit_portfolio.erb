@@ -1,0 +1,11 @@
+<form method="post" action="/clients/<%= params[:client_id]%>/portfolios/<%= params[:id] %>">
+  <input type="hidden" name="_method" value="patch"> <!-- #browsers only understand GET and POST requests -->	
+  <p> <input type="text" name="portfolio_name" value="<%= @portfolio.name %>"> </p>
+  <input type="hidden" name="stock_ids[]" value="">
+  <% Stock.all.each do |stock| %>
+    <input type="checkbox" name="stock_ids[]" value="<%= stock.id %>" <%= 'checked="checked"' if @portfolio.stock_ids.include?(stock.id) %>/>
+    <%= stock.symbol %>
+    <br>
+  <% end %>
+  <button>Update Portfolio</button>
+</form>
