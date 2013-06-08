@@ -2,18 +2,19 @@
 <% @clients.each do |client| %>
 
     Client name is <%= client.name %> and they have the following portfolios:
-<!-- <uL> -->
+<uL>
 	<% client.portfolios.each do |portfolio|  %>
-	  <!-- <li> -->
+	  <li>
 		<a href="/clients/<%= client.id %>/portfolios/<%= portfolio.id %>/edit "><%= portfolio.name%></a>
 		<br>
 		<%= portfolio.stocks.map { |stock| stock.symbol }.join ", " %>
-	  <!-- </li> -->
+	  </li>
 	    
 	    
 	<% end %>
 		
-<!-- </ul>	 -->
-     <a href="/clients/<%= client.id %>/portfolios/new"> Add new portfolio </a>
+</ul>
+<br>	
+     <a href="/clients/<%= client.id %>/portfolios/new"><button> Add new portfolio </button> </a>
   </p>
 <% end %>
